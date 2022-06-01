@@ -1,3 +1,7 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
 html,
 body {
   padding: 0;
@@ -13,4 +17,104 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+.swiper {
+  width: 100%;
+}
+
+.swiper-slide {
+  background-position: center;
+  background-size: cover;
+  width: 450px;
+  height: 450px;
+}
+
+.swiper-wrapper {
+  height: 500px !important;
+  width: 500px !important;
+}
+
+.swiper-slide img {
+  height: 500px;
+  width: 500px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.swiper-slide-shadow-left {
+  display: none;
+}
+
+.swiper-slide-shadow-right {
+  display: none;
+}
+
+.swiper-pagination-bullet {
+  background-color: #bad985 !important;
+  transform: scale(2);
+  margin: 0px 6px !important;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #bad985;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+@media only screen and (max-width: 500px) {
+  .swiper-slide {
+    background-position: center;
+    background-size: cover;
+    width: 200px;
+    height: 200px;
+  }
+
+  .swiper-wrapper {
+    height: 250px !important;
+    width: 250px !important;
+  }
+
+  .swiper-slide img {
+    height: 250px;
+    width: 250px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+
+  .swiper-pagination-bullet {
+    background-color: #bad985 !important;
+    transform: scale(2);
+    margin: -8px 6px !important;
+  }
+}
+
+@media screen and (max-width: 1000px) and (min-width: 501px) {
+  .swiper-slide {
+    background-position: center;
+    background-size: cover;
+    width: 350px;
+    height: 350px;
+  }
+
+  .swiper-wrapper {
+    height: 400px !important;
+    width: 450px !important;
+  }
+
+  .swiper-slide img {
+    height: 400px;
+    width: 450px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+
+  .swiper-pagination-bullet {
+    background-color: #bad985 !important;
+    transform: scale(2);
+    margin: -8px 6px !important;
+  }
 }
