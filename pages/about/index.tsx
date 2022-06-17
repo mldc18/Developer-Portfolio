@@ -12,12 +12,12 @@ const Contact = () => {
           <Navbar currentTab="About" />
           <SectionTitle title="ABOUT" />
           <div className="text-xl sm:text-2xl indent-5 font-Karla text-slate-500 tracking-tighter text-justify sm:w-[500px] mt-5">
-            Hi! I'm lester. I have contributed to the development of 3 industry
-            projects over the past year. I challenge myself everyday through
-            creating fun and interactive applications. If there is one thing to
-            remember me by,
+            Hi! I&apos;m lester. I have contributed to the development of 3
+            industry projects over the past year. I challenge myself everyday
+            through creating fun and interactive applications. If there is one
+            thing to remember me by,
             <p className="italic font-bold text-white text-2xl sm:text-3xl text-center mt-4 animate-bounce">
-              i don't deliver substandard work.
+              i don&apos;t deliver substandard work.
             </p>
           </div>
           <div className="flex flex-col items-start">
