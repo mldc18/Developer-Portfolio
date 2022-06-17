@@ -27,6 +27,7 @@ const ProjectCard = (props: ProjectCardProps) => {
     <div className="grid grid-cols-1 lg:grid-cols-2 mb-8 px-5 tracking-tighter">
       <div className="max-w-[450px] max-h-[300px] block mt-5 mx-8">
         <Image
+          className="rounded-lg"
           src={imageSrc}
           placeholder="blur"
           blurDataURL={imageSrc}
