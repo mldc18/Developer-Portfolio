@@ -8,6 +8,7 @@ import {
 import { FaReact } from "react-icons/fa";
 import { ImGit } from "react-icons/im";
 import styled from "styled-components";
+import Tooltip from "./tool-tip";
 
 const TechstackContainer = styled.div.attrs({
   className: `
@@ -20,13 +21,13 @@ const TechstackContainer = styled.div.attrs({
 const TechStacks = () => {
   return (
     <TechstackContainer>
-      <FaReact className="hover:text-[#61dafb] cursor-pointer" />
-      <SiNextdotjs className="hover:text-black cursor-pointer" />
-      <SiJavascript className="hover:text-[#F0DB4F] cursor-pointer" />
-      <SiTypescript className="hover:text-[#007acc] cursor-pointer" />
-      <SiTailwindcss className="hover:text-sky-400 cursor-pointer " />
-      <SiStyledcomponents className="hover:text-white cursor-pointer" />
-      <ImGit className="hover:text-[#f14e32] cursor-pointer" />
+      <Tooltip text="React" />
+      <Tooltip text="NextJS" />
+      <Tooltip text="JavaScript" />
+      <Tooltip text="TypeScript" />
+      <Tooltip text="Tailwind" />
+      <Tooltip text="Styled Components" />
+      <Tooltip text="Git" />
     </TechstackContainer>
   );
 };

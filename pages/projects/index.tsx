@@ -1,7 +1,4 @@
-import ColoredHeader from "../../libs/components/colored-header";
-import MediaCarousel from "../../libs/components/media-carousel";
 import SectionTitle from "../../libs/components/section-title";
-import TechstackSection from "../../libs/components/techstack-section";
 import MainTemplate from "../../libs/components/template/main-template";
 import {
   getAlmedahImages,
@@ -9,83 +6,79 @@ import {
 } from "../../services/carousel-images";
 import { BsFillCaretLeftFill, BsFillCaretRightFill } from "react-icons/bs";
 import { useEffect, useState } from "react";
-import { copyFile } from "fs";
+import ProjectTemplate from "../../libs/components/template/project-template";
+import Navbar from "../../libs/components/nav-bar";
+import { Projects } from "../../libs/enums/projects";
+import { Techstacks } from "../../libs/enums/techstacks";
 
 const BOFFI_TECHSTACK = [
-  "react",
-  "next",
-  "javascript",
-  "typescript",
-  "tailwind",
-  "styledcomponents",
-  "git",
+  Techstacks.REACT,
+  Techstacks.NEXT,
+  Techstacks.JAVASCRIPT,
+  Techstacks.TYPESCRIPT,
+  Techstacks.TAILWIND,
+  Techstacks.STYLED_COMPONENTS,
+  Techstacks.GIT,
 ];
 
-const ALMEDAH_TECHSTACK = ["laravel", "html", "javascript", "css", "git"];
+const ALMEDAH_TECHSTACK = [
+  Techstacks.LARAVEL,
+  Techstacks.HTML,
+  Techstacks.JAVASCRIPT,
+  Techstacks.CSS,
+  Techstacks.GIT,
+];
 
 type ProjectProps = {
   almedahImages: Array<string>;
   boffiImages: Array<string>;
 };
 
-const Projects = (props: ProjectProps) => {
+const ProjectsPage = (props: ProjectProps) => {
   const { almedahImages, boffiImages } = props;
-  const [currentPageContent, setCurrentPageContent] = useState("BOFFI");
-  const [currentPageNumber, setCurrentPageNumber] = useState(1);
+  const [currentPageContent, setCurrentPageContent] = useState(Projects.BOFFI);
+  const [currentProjectNumber, setCurrentProjectNumber] = useState(1);
   const pageLimit = 2;
 
   useEffect(() => {
-    console.log("hatdog");
-    if (currentPageNumber == 1) {
-      setCurrentPageContent("BOFFI");
-    } else if (currentPageNumber == 2) {
-      setCurrentPageContent("ALMEDAH");
+    if (currentProjectNumber == 1) {
+      setCurrentPageContent(Projects.BOFFI);
+    } else if (currentProjectNumber == 2) {
+      setCurrentPageContent(Projects.ALMEDAH);
     }
-  }, [currentPageNumber]);
+  }, [currentProjectNumber]);
 
-  function handleLeftNavigation() {
-    setCurrentPageNumber((prevState) => prevState - 1);
+  function handleNextNavigation() {
+    setCurrentProjectNumber((prevState) => prevState - 1);
   }
 
-  function handleRightNavigation() {
-    setCurrentPageNumber((prevState) => prevState + 1);
+  function handlePreviousNavigation() {
+    setCurrentProjectNumber((prevState) => prevState + 1);
   }
 
-  const disableLeftNavigation = currentPageNumber == 0;
-  const disableRightNavigation = currentPageNumber < pageLimit;
+  const disableNextNavigation = currentProjectNumber == 1;
+  const disablePreviousNavigation = currentProjectNumber == pageLimit;
   let pageContent;
 
   switch (currentPageContent) {
-    case "BOFFI":
+    case Projects.BOFFI:
       pageContent = (
-        <div className="flex flex-col justify-center items-center py-14 sm:px-28">
-          <div className="w-full flex flex-col">
-            <ColoredHeader coloredText="Boffi Studio Manila Showroom">
-              - In collaboration with Symph & Focus Global Inc
-            </ColoredHeader>
-            <div className="sm:mt-10">
-              <MediaCarousel images={boffiImages} />
-            </div>
-
-            <TechstackSection collection={BOFFI_TECHSTACK} />
-          </div>
-        </div>
+        <ProjectTemplate
+          coloredHeaderText="Boffi Studio Manila Showroom"
+          coloredHeaderChildren="- In collaboration with Symph & Focus Global Inc"
+          mediaCarouselImages={boffiImages}
+          techstackCollection={BOFFI_TECHSTACK}
+        />
       );
       break;
-    case "ALMEDAH":
+    case Projects.ALMEDAH:
       pageContent = (
-        <div className="flex flex-col justify-center items-center py-14 sm:px-28">
-          <div className="w-full flex flex-col">
-            <ColoredHeader coloredText="Almedah ERP">
-              - In collaboration with TIP QC TechnoCore
-            </ColoredHeader>
-            <div className="sm:mt-10">
-              <MediaCarousel images={almedahImages} />
-            </div>
-
-            <TechstackSection collection={ALMEDAH_TECHSTACK} />
-          </div>
-        </div>
+        <ProjectTemplate
+          coloredHeaderText="Almedah ERP"
+          coloredHeaderChildren="- In collaboration with TIP QC TechnoCore"
+          mediaCarouselImages={almedahImages}
+          techstackCollection={ALMEDAH_TECHSTACK}
+        />
       );
       break;
   }
@@ -93,10 +86,13 @@ const Projects = (props: ProjectProps) => {
   return (
     <MainTemplate>
       <div className="bg-slate-900">
-        <div className="flex text-5xl sm:text-7xl text-[#bad985]">
+        <div className="flex justify-center items-center pt-20">
+          <Navbar currentTab="Projects" />
+        </div>
+        <div className="flex justify-center text-5xl sm:text-7xl text-[#bad985]">
           <button
-            onClick={handleLeftNavigation}
-            disabled={disableLeftNavigation}
+            onClick={handleNextNavigation}
+            disabled={disableNextNavigation}
           >
             <BsFillCaretLeftFill
               className={`hover:text-[#61dafb] cursor-pointer`}
@@ -104,13 +100,10 @@ const Projects = (props: ProjectProps) => {
           </button>
           <SectionTitle title="PROJECTS" />
           <button
-            onClick={handleRightNavigation}
-            disabled={disableRightNavigation}
+            onClick={handlePreviousNavigation}
+            disabled={disablePreviousNavigation}
           >
-            <BsFillCaretRightFill
-              className="hover:text-black cursor-pointer"
-              onClick={handleRightNavigation}
-            />
+            <BsFillCaretRightFill className="hover:text-black cursor-pointer" />
           </button>
         </div>
         {pageContent}
@@ -128,4 +121,4 @@ export async function getStaticProps() {
   };
 }
 
-export default Projects;
+export default ProjectsPage;

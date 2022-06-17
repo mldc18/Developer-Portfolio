@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 import NewtabLink from "./newtab-link";
 
 type ColoredHeaderProps = {
-  children: ReactNode;
+  children?: ReactNode;
   coloredText: string;
   textBeforeChildren?: string;
 };

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { SiLinkedin, SiGithub, SiMaildotru } from "react-icons/si";
 import styled from "styled-components";
 
@@ -10,12 +11,34 @@ const FloatingSidebarContainer = styled.div.attrs({
   text-4xl text-[#bad985] `,
 })``;
 
+function handleEmailClick() {
+  navigator.clipboard.writeText("lesterdelacruz.dev@gmail.com");
+}
+
 const FloatingSidebar = () => {
   return (
     <FloatingSidebarContainer>
-      <SiGithub className="hover:text-black hover:scale-150 transition ease-in-out duration-300 cursor-pointer my-2" />
-      <SiLinkedin className="hover:text-[#0E76A8] hover:scale-150 transition ease-in-out duration-300 cursor-pointer my-2" />
-      <SiMaildotru className="hover:text-red-500 hover:scale-150 transition ease-in-out duration-300 cursor-pointer my-2" />
+      <Link href="https://github.com/mldc18" passHref>
+        <a target="_blank">
+          <SiGithub className="hover:text-black hover:scale-125 transition ease-in-out duration-300 cursor-pointer my-2" />
+        </a>
+      </Link>
+      <Link
+        href="https://www.linkedin.com/in/lester-dela-cruz-63970823b/"
+        passHref
+      >
+        <a target="_blank">
+          <SiLinkedin className="hover:text-[#0E76A8] hover:scale-125 transition ease-in-out duration-300 cursor-pointer my-2" />
+        </a>
+      </Link>
+      <div className="relative sm:w-[300px]">
+        <div className="peer">
+          <SiMaildotru className="hover:text-red-500 hover:scale-125 transition ease-in-out duration-300 cursor-pointer my-2" />
+        </div>
+        <div className="absolute top-12 sm:-right-12 sm:top-4 sm:w-[300px] text-xs font-Karla font-bold peer-hover:visible invisible">
+          copy email
+        </div>
+      </div>
     </FloatingSidebarContainer>
   );
 };

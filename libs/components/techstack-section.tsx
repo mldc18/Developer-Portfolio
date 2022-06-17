@@ -1,18 +1,7 @@
 import { Techstacks } from "../enums/techstacks";
-import {
-  SiNextdotjs,
-  SiTypescript,
-  SiStyledcomponents,
-  SiTailwindcss,
-  SiJavascript,
-  SiLaravel,
-  SiCss3,
-  SiHtml5,
-} from "react-icons/si";
-import { FaReact } from "react-icons/fa";
-import { ImGit } from "react-icons/im";
 import styled from "styled-components";
 import NewtabLink from "./newtab-link";
+import Tooltip from "./tool-tip";
 
 type TechstackSectionProps = {
   collection: Array<string>;
@@ -36,31 +25,41 @@ const TechstackContainer = styled.div.attrs({
 const TechstackSection = (props: TechstackSectionProps) => {
   const { collection, hasSite = false } = props;
 
-  const techstacks = collection.map((icon) => {
-    switch (icon) {
+  const techstacks = collection.map((techstack, index) => {
+    let icon;
+    switch (techstack) {
       case Techstacks.REACT:
-        return <FaReact className="hover:text-[#61dafb] cursor-pointer" />;
+        icon = <Tooltip key={index} text="React" />;
+        break;
       case Techstacks.NEXT:
-        return <SiNextdotjs className="hover:text-black cursor-pointer" />;
+        icon = <Tooltip key={index} text="Next" />;
+        break;
       case Techstacks.JAVASCRIPT:
-        return <SiJavascript className="hover:text-[#F0DB4F] cursor-pointer" />;
+        icon = <Tooltip key={index} text="JavaScript" />;
+        break;
       case Techstacks.TYPESCRIPT:
-        return <SiTypescript className="hover:text-[#007acc] cursor-pointer" />;
+        icon = <Tooltip key={index} text="TypeScript" />;
+        break;
       case Techstacks.TAILWIND:
-        return <SiTailwindcss className="hover:text-sky-400 cursor-pointer " />;
+        icon = <Tooltip key={index} text="Tailwind" />;
+        break;
       case Techstacks.STYLED_COMPONENTS:
-        return (
-          <SiStyledcomponents className="hover:text-white cursor-pointer" />
-        );
+        icon = <Tooltip key={index} text="Styled Components" />;
+        break;
       case Techstacks.GIT:
-        return <ImGit className="hover:text-[#f14e32] cursor-pointer" />;
+        icon = <Tooltip key={index} text="Git" />;
+        break;
       case Techstacks.LARAVEL:
-        return <SiLaravel className="hover:text-white cursor-pointer" />;
+        icon = <Tooltip key={index} text="Laravel" />;
+        break;
       case Techstacks.CSS:
-        return <SiCss3 className="hover:text-white cursor-pointer" />;
+        icon = <Tooltip key={index} text="CSS" />;
+        break;
       case Techstacks.HTML:
-        return <SiHtml5 className="hover:text-white cursor-pointer" />;
+        icon = <Tooltip key={index} text="HTML" />;
+        break;
     }
+    return icon;
   });
 
   const siteLink = hasSite && (

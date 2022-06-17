@@ -1,6 +1,4 @@
-import type { NextPage } from "next";
 import { motion } from "framer-motion";
-import { getAlmedahImages, getBoffiImages } from "../services/carousel-images";
 import Introduction from "../libs/components/introduction";
 import "swiper/css";
 import "swiper/css/effect-coverflow";

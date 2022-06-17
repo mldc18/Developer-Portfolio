@@ -2,7 +2,16 @@ import ColoredHeader from "./colored-header";
 import FloatingSidebar from "./floating-sidebar";
 import TechStacks from "./tech-stacks";
 import styled from "styled-components";
-import NavItems from "./nav-items";
+import Link from "next/link";
+import { useState } from "react";
+
+const NavItemsContainer = styled.div.attrs({
+  className: `
+  flex space-x-7 md:space-x-14 mb-8
+  text-xl md:text-4xl font-Rubik font-bold
+  text-transparent bg-clip-text bg-gradient-to-r from-lime-300 to-teal-500 
+  tracking-wide`,
+})``;
 
 const JobTitle = styled.p.attrs({
   className: `
@@ -14,21 +23,80 @@ const JobTitle = styled.p.attrs({
 })``;
 
 const Introduction = () => {
-  return (
-    <div className="flex justify-center items-center h-screen overflow-clip">
-      <div className="flex flex-col justify-center items-center">
-        <NavItems />
-        <JobTitle>WEB DEVELOPER</JobTitle>
+  const [mainText, setMainText] = useState("WEB DEVELOPER");
+  let subtitle;
+
+  function handleChangeMainText(text: string) {
+    setMainText(text);
+  }
+
+  switch (mainText) {
+    case "WEB DEVELOPER":
+      subtitle = (
         <ColoredHeader
           coloredText="exceptional,"
           textBeforeChildren="Passion for delivering"
         >
           mobile-first web applications
         </ColoredHeader>
+      );
+      break;
+    case "PROJECTS":
+      subtitle = (
+        <ColoredHeader
+          coloredText="timely & high standard"
+          textBeforeChildren="Providing clients with"
+        >
+          product features
+        </ColoredHeader>
+      );
+      break;
+    case "SELF-MADE":
+      subtitle = (
+        <ColoredHeader
+          coloredText="fun & challenging"
+          textBeforeChildren="Sharpening skills through"
+        >
+          app ideas
+        </ColoredHeader>
+      );
+      break;
+    case "WEB DEVELOPER":
+      subtitle = (
+        <ColoredHeader
+          coloredText="exceptional,"
+          textBeforeChildren="Passion for delivering"
+        >
+          mobile-first web applications
+        </ColoredHeader>
+      );
+      break;
+  }
 
+  return (
+    <div className="flex justify-center items-center h-full">
+      <div className="flex flex-col justify-center items-center">
+        <NavItemsContainer>
+          <Link href="/projects">
+            <a onMouseEnter={() => handleChangeMainText("PROJECTS")}>
+              Projects
+            </a>
+          </Link>
+          <Link href="/self-made">
+            <a onMouseEnter={() => handleChangeMainText("SELF-MADE")}>
+              Self-made
+            </a>
+          </Link>
+          <Link href="/about">
+            <a onMouseEnter={() => handleChangeMainText("WEB DEVELOPER")}>
+              About
+            </a>
+          </Link>
+        </NavItemsContainer>
+        <JobTitle>{mainText}</JobTitle>
+        {subtitle}
         <TechStacks />
       </div>
-      <FloatingSidebar />
     </div>
   );
 };
