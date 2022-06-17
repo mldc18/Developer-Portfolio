@@ -18,7 +18,7 @@ const ProjectTemplate = (props: ProjectTemplateProps) => {
   } = props;
 
   return (
-    <div className="flex flex-col justify-center items-center py-14 sm:px-28">
+    <div className="py-10 sm:px-28">
       <div className="w-full flex flex-col">
         <ColoredHeader coloredText={coloredHeaderText}>
           {coloredHeaderChildren}

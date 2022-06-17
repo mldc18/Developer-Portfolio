@@ -1,7 +1,6 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCoverflow, Pagination } from "swiper";
 import Image from "next/image";
-import { useEffect, useState } from "react";
 
 export type MediaCarouselProps = {
   images: Array<string>;
@@ -12,14 +11,16 @@ const MediaCarousel = (props: MediaCarouselProps) => {
 
   const swiperSlides = images.map((image, index) => (
     <SwiperSlide key={index}>
-      <Image
-        blurDataURL={image}
-        layout="fill"
-        objectFit="contain"
-        placeholder="blur"
-        quality={100}
-        src={image}
-      />
+      <div className="w-[300px] h-[200px] sm:w-[400px] sm:h-[350px] relative mt-10 sm:mt-0">
+        <Image
+          className="rounded-lg"
+          blurDataURL={image}
+          placeholder="blur"
+          objectFit="cover"
+          layout="fill"
+          src={image}
+        />
+      </div>
     </SwiperSlide>
   ));
 
@@ -30,10 +31,10 @@ const MediaCarousel = (props: MediaCarouselProps) => {
       centeredSlides={true}
       slidesPerView={"auto"}
       coverflowEffect={{
-        rotate: 50,
+        rotate: 45,
         stretch: 0,
         depth: 0,
-        modifier: 1,
+        modifier: 3,
       }}
       loop={true}
       modules={[EffectCoverflow, Pagination]}
