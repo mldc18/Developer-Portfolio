@@ -26,7 +26,14 @@ const ProjectCard = (props: ProjectCardProps) => {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 mb-8 px-5 tracking-tighter">
       <div className="max-w-[450px] max-h-[300px] block mt-5 mx-8">
-        <Image src={imageSrc} layout="responsive" width={450} height={300} />
+        <Image
+          src={imageSrc}
+          placeholder="blur"
+          blurDataURL={imageSrc}
+          layout="responsive"
+          width={450}
+          height={300}
+        />
       </div>
       <div className="flex flex-col items-center lg:items-start relative md:ml-3 md:mt-5 w-full lg:w-[500px] lg:max-w-[500px] text-center lg:text-left">
         <div className="text-2xl sm:text-3xl font-Rubik text-white mt-4 md:mt-0">
