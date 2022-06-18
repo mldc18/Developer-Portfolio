@@ -95,6 +95,9 @@ const Introduction = () => {
         </NavItemsContainer>
         <JobTitle>{mainText}</JobTitle>
         {subtitle}
+        <div className="font-Karla text-xs md:text-lg text-slate-500 tracking-tighter mt-5">
+          created using the following
+        </div>
         <TechStacks />
       </div>
     </div>

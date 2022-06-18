@@ -5,7 +5,7 @@ const TechstackContainer = styled.div.attrs({
   className: `
   flex items-center justify-center 
   space-x-3 md:space-x-5 
-  text-3xl md:text-6xl text-[#bad985] 
+  text-3xl md:text-5xl text-[#bad985] 
   w-3/4 sm:w-full mt-5`,
 })``;
 
