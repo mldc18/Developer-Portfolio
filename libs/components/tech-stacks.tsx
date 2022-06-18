@@ -1,12 +1,3 @@
-import {
-  SiNextdotjs,
-  SiTypescript,
-  SiStyledcomponents,
-  SiTailwindcss,
-  SiJavascript,
-} from "react-icons/si";
-import { FaReact } from "react-icons/fa";
-import { ImGit } from "react-icons/im";
 import styled from "styled-components";
 import Tooltip from "./tool-tip";
 
