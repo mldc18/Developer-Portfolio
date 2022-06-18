@@ -1,5 +1,5 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import { EffectCoverflow, Pagination } from "swiper";
+import { Autoplay, EffectCoverflow, Pagination } from "swiper";
 import Image from "next/image";
 
 export type MediaCarouselProps = {
@@ -31,13 +31,17 @@ const MediaCarousel = (props: MediaCarouselProps) => {
       centeredSlides={true}
       slidesPerView={"auto"}
       coverflowEffect={{
-        rotate: 45,
+        rotate: 15,
         stretch: 0,
         depth: 0,
         modifier: 3,
       }}
+      autoplay={{
+        delay: 2500,
+        disableOnInteraction: false,
+      }}
       loop={true}
-      modules={[EffectCoverflow, Pagination]}
+      modules={[Autoplay, EffectCoverflow, Pagination]}
       navigation={true}
       pagination={true}
       className="mySwiper"

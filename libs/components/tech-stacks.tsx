@@ -14,7 +14,6 @@ const TechStacks = () => {
     <TechstackContainer>
       <Tooltip text="React" />
       <Tooltip text="NextJS" />
-      <Tooltip text="JavaScript" />
       <Tooltip text="TypeScript" />
       <Tooltip text="Tailwind" />
       <Tooltip text="Styled Components" />
